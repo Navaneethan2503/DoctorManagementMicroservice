@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: patientmicroservice-deployment
+  labels:
+    app: patientmicroservice
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: patientmicroservice  
+  template:
+    metadata:
+      labels:
+        app: patientmicroservice
+    spec:
+      containers:
+      - name: patientmicroservice
+        image: localhost:9000/patientmicroservice:latest
+        ports:
+        - containerPort: 8080
+        imagePullPolicy: IfNotPresent
